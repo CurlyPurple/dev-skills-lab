@@ -5,6 +5,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import createError from 'http-errors'
 import logger from 'morgan'
+import methodOverride from 'method-override'
 import './config/database.js'
 
 
@@ -21,6 +22,7 @@ app.set('view engine', 'ejs')
 // basic middleware
 app.use(logger('dev'))
 app.use(express.json())
+app.use(methodOverride('_method'))
 app.use(express.urlencoded({ extended: false }))
 app.use(
   express.static(

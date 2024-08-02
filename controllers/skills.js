@@ -23,9 +23,31 @@ async function deleteSkill(req,res) {
   res.redirect('/skills')
 }
 
+async function show(req,res) {
+  const skill = await Skill.findById(req.params.skillId)
+  res.render('skills/show', {
+    skill
+  })
+}
+
+async function edit(req,res) {
+  const skill = await Skill.findById(req.params.skillId)
+  res.render('skills/edit', {
+    skill
+  })
+}
+
+async function update(req,res) {
+  await Skill.findByIdAndUpdate(req.params.skillId, req.body, {new: true})
+  res.redirect(`/skills/${req.params.skillId}`)
+}
+
 export {
   index,
   newSkill as new,
   create,
-  deleteSkill as delete
+  deleteSkill as delete,
+  show,
+  edit,
+  update
 }

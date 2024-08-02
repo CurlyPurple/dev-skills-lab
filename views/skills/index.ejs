@@ -7,12 +7,12 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>Here are some skills</h1>
+  <h1>My Hero Training Skills</h1>
   <a href="/skills/new">Add New Skill</a>
   <ul>
   <% skills.forEach(skill => { %>
     <li>
-      <form class="form" action="/skills/<%= skill._id %>?_method=DELETE">
+      <form method="POST" class="form" action="/skills/<%= skill._id %>?_method=DELETE">
         <button type="submit">x</button>
       </form>
       <a href="/skills/<%= skill._id %>"><%= skill.skill %>:</a>
